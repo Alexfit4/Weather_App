@@ -47,8 +47,6 @@ $(document).ready(function () {
 			});
 		}
 
-		
-
 		$.ajax({
 			url: url, //API Call
 			dataType: "json",
@@ -66,39 +64,49 @@ $(document).ready(function () {
 						dayjs()
 							.add(j + 1, "day")
 							.format("M/DD/YYYY")
-					);
-				}
-				$.each(
-					data.list,
-					function (dates, val) {
-						$(".col").append("<p>" + data.city.name + "</p>");
-						$(".col").append(
-							"<p>" +
-								"<img src='https://openweathermap.org/img/w/" +
-								val.weather[0].icon +
-								".png'>" +
-								"</p>"
-						);
-						$(".col").append("<p>" + val.main.temp + "&degC" + "</p>");
-						$(".col").append("<p>" + val.weather[0].description + "</p>");
-					}
 
-					// var wf = "";
-					// wf += "<h2>" + data.city.name + "</h2>"; // City (displays once)
-					// $.each(data.list, function (dates, val) {
-					// 	wf += "<p>"; // Opening paragraph tag
-					// 	wf += val.main.temp + "&degC"; // Temperature
-					// 	wf += "<span> | " + val.weather[0].description + "</span>"; // Description
-					// 	wf +=
-					// 		"<img src='https://openweathermap.org/img/w/" +
-					// 		val.weather[0].icon +
-					// 		".png'>"; // Icon
-					// 	wf += "</p>"; // Closing paragraph tag
-					// });
-					// $(".output2").html(wf);
+						// $(".col").append("<p>" + val.main.temp + "&degC" + "</p>")
+					);
+					console.log(data.list[0]);
+				}
+
+				// $.each(
+				// 	data.list[0],
+				// 	function (dates, val) {
+				$(".col").append("<p>" + data.city.name + "</p>");
+				// console.log(data.list[0].weather[0].icon)
+
+				$(".col").append(
+					"<p>" +
+						"<img src='https://openweathermap.org/img/w/" +
+						data.list[0].weather[0].icon +
+						".png'>" +
+						"</p>"
 				);
+				$(".col").append("<p>" + data.list[0].main.temp + "&degC" + "</p>");
+				$(".col").append("<p>" + data.list[0].weather[0].description + "</p>");
+				// }
+
+				// var wf = "";
+				// wf += "<h2>" + data.city.name + "</h2>"; // City (displays once)
+				// $.each(data.list, function (dates, val) {
+				// 	wf += "<p>"; // Opening paragraph tag
+				// 	wf += val.main.temp + "&degC"; // Temperature
+				// 	wf += "<span> | " + val.weather[0].description + "</span>"; // Description
+				// 	wf +=
+				// 		"<img src='https://openweathermap.org/img/w/" +
+				// 		val.weather[0].icon +
+				// 		".png'>"; // Icon
+				// 	wf += "</p>"; // Closing paragraph tag
+				// });
+				// $(".output2").html(wf);
+				// );
 			},
 		});
+
+		localStorage.setItem("City", location);
+
+		$("ol").append("<li>" + location + "</li>");
 	});
 
 	function outputdata(data) {
