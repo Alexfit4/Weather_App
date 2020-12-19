@@ -42,7 +42,7 @@ $(document).ready(function () {
 					var results = outputdata(data);
 					$("#outputData").html(results);
 					$("#outputData").val("");
-					console.log(results);
+					// console.log(results);
 				},
 			});
 		}
@@ -67,7 +67,7 @@ $(document).ready(function () {
 
 						// $(".col").append("<p>" + val.main.temp + "&degC" + "</p>")
 					);
-					console.log(data.list[0]);
+					// console.log(data.list[0]);
 				}
 
 				// $.each(
@@ -104,9 +104,12 @@ $(document).ready(function () {
 			},
 		});
 
-		localStorage.setItem("City", location);
-
 		$("ol").append("<li>" + location + "</li>");
+		localStorage.setItem("City", location);
+	});
+
+	$("#clear-history").click(function (e) {
+		$("li").remove("li");
 	});
 
 	function outputdata(data) {
