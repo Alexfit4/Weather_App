@@ -1,16 +1,13 @@
 // API Key used for open weather
 var apiKey = "4464393d7bcb567442cbd649e97679ad";
 var searchKey = "";
-var currentDate = dayjs().format('DD/MM/YYYY')
+var currentDate = dayjs().format("DD/MM/YYYY");
+var url = "http://api.openweathermap.org/data/2.5/forecast?";
 
-// var today = new Date();
-// var dd = String(today.getDate()).padStart(2, "0");
-// var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-// var yyyy = today.getFullYear();
-
-// today = mm + "/" + dd + "/" + yyyy;
-
-
+// for (var j = 0; j < 5; j++) {
+//     var dates = $(".Day" + (j + 1));
+//     $(dates).text(dayjs().add(j + 1, 'day').format('M/DD/YYYY'));
+// }
 
 $(document).ready(function () {
 	$("#submit").click(function (e) {
@@ -36,6 +33,10 @@ $(document).ready(function () {
 					location +
 					"&appid=" +
 					apiKey,
+				data: {
+					units: "metric",
+				},
+
 				dataType: "jsonp",
 				success: function (data) {
 					var results = outputdata(data);
@@ -45,6 +46,59 @@ $(document).ready(function () {
 				},
 			});
 		}
+
+		
+
+		$.ajax({
+			url: url, //API Call
+			dataType: "json",
+			type: "GET",
+			data: {
+				q: location,
+				appid: apiKey,
+				units: "metric",
+				cnt: "5",
+			},
+			success: function (data) {
+				for (var j = 0; j < 5; j++) {
+					var dates = $(".Day" + (j + 1));
+					$(dates).text(
+						dayjs()
+							.add(j + 1, "day")
+							.format("M/DD/YYYY")
+					);
+				}
+				$.each(
+					data.list,
+					function (dates, val) {
+						$(".col").append("<p>" + data.city.name + "</p>");
+						$(".col").append(
+							"<p>" +
+								"<img src='https://openweathermap.org/img/w/" +
+								val.weather[0].icon +
+								".png'>" +
+								"</p>"
+						);
+						$(".col").append("<p>" + val.main.temp + "&degC" + "</p>");
+						$(".col").append("<p>" + val.weather[0].description + "</p>");
+					}
+
+					// var wf = "";
+					// wf += "<h2>" + data.city.name + "</h2>"; // City (displays once)
+					// $.each(data.list, function (dates, val) {
+					// 	wf += "<p>"; // Opening paragraph tag
+					// 	wf += val.main.temp + "&degC"; // Temperature
+					// 	wf += "<span> | " + val.weather[0].description + "</span>"; // Description
+					// 	wf +=
+					// 		"<img src='https://openweathermap.org/img/w/" +
+					// 		val.weather[0].icon +
+					// 		".png'>"; // Icon
+					// 	wf += "</p>"; // Closing paragraph tag
+					// });
+					// $(".output2").html(wf);
+				);
+			},
+		});
 	});
 
 	function outputdata(data) {
@@ -52,61 +106,31 @@ $(document).ready(function () {
 		// Return the HTML string of all the desired data
 		return (
 			"<div><h2>Weather in " +
-			data.name + '(' + currentDate + ')' + 
+			data.name +
+			"(" +
+			currentDate +
+			")" +
 			"</h2>" +
 			"<img src='http://openweathermap.org/img/w/" +
 			data.weather[0].icon +
 			".png' width=100px>" +
-			"<h4> Weather: " +
-			data.weather[0].main +
 			"<br>" +
-			"Tempature: " +
+			"<h3> Tempature: " +
 			data.main.temp +
-			"F <br>" +
-			"High Temp: " +
-			data.main.temp_max +
-			"F <br> " +
-			"Low Temp: " +
-			data.main.temp_min +
-			"F <br> " +
+			"°C" +
+			" <br>" +
 			"Pressure: " +
 			data.main.pressure +
 			"hPa <br> " +
 			"Humidity: " +
 			data.main.humidity +
 			"%<br> " +
-			"Visibility: " +
-			data.main.visibility +
-			"meters <br>" +
 			"Wind Speed: " +
 			data.wind.speed +
 			" m/sec <br>" +
 			"Wind Direction: " +
 			data.wind.deg +
-			" degree </hr></div>"
+			" degree </h3></div>"
 		);
 	}
-
-	// $.ajax({
-	//     type: "GET",
-	//     url:
-	//     "http://api.openweathermap.org/data/2.5/weather?" +
-	//     searchKey +
-	//     "=" +
-	//     location +
-	//     "&appid=" +
-	//     apiKey,
-	//     dataType: "jsonp",
-	//     success: function (response) {
-	//         var results2 = outputdata(data);
-	//         $(".output2").html(results2);
-	//         $(".output2").val("");
-	//         console.log(results);
-
-	//     }
-	// });
-
-	// function outputdatatwo(data2) {
-	//     return
-	//  }
 });
