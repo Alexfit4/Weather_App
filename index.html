@@ -8,9 +8,12 @@
 		<link
 			href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap"
 			rel="stylesheet"
-        />
-        
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+		/>
 
 		<link
 			rel="stylesheet"
@@ -26,77 +29,90 @@
 		/>
 
 		<link rel="stylesheet" href="style.css" />
+		<title>Weather Dashboard</title>
+	</head>
 
-        <nav class="navbar navbar-dark bg-dark">
-            <span class="navbar-brand mb-0 h1 w-100 text-center">Weather Dashboard</span>
-        </nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-4 bg-light">
-                    <p class="search-header my-1">Search for a city</p>
-                    <div class="input-group mb-3">
-                        <input id="location" type="text" class="form-control" placeholder="Enter city name" aria-label="Enter city name">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" id="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <ol>
-                        
-                    </ol>
-                    <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
-                    <form id="history"></form>
-                </div>
-                <div class="col-8">
-                    <div class="row mr-0">
-                        <div class="col-12 border border-dark m-3 rounded">
-                            <div class="row">
-                                <div class="col-12">
-                                    <span id="city-name" class="city-name align-middle"></span>
-                                    
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <p id="temperature"></p>
-                                </div>
-                            </div>
-                            <div id="outputData"></div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <p id="humidity"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <p id="wind-speed"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 d-flex">
-                                    <p id="UV-index"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <h3>5-Day Forecast</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="output2"></div>
-                        <div id="dates"></div>
-                        <div  class="col Day1 forecast bg-primary text-white ml-3 mb-3 rounded"><div class="outputnum"></div></div>
-                        <div class="col  Day2 forecast bg-primary text-white ml-3 mb-3 rounded"><div class="outputnum"></div></div>
-                        <div class="col Day3 forecast bg-primary text-white ml-3 mb-3 rounded"><div class="outputnum"></div></div>
-                        <div class="col Day4 forecast bg-primary text-white ml-3 mb-3 rounded"><div class="outputnum"></div></div>
-                        <div class="col Day5 forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	<body>
+		<nav class="navbar navbar-dark bg-dark">
+			<span class="navbar-brand mb-0 h1 w-100 text-center"
+				>Weather Dashboard</span
+			>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-4 bg-light">
+					<p class="search-header my-1">Search for a city</p>
+					<div class="input-group mb-3">
+						<input
+							id="location"
+							type="text"
+							class="form-control"
+							placeholder="Enter city name"
+							aria-label="Enter city name"
+						/>
+						<div class="input-group-append">
+							<button class="btn btn-primary" type="button" id="submit">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</div>
+					<ol></ol>
+					<button class="btn btn-primary mb-3" type="button" id="clear-history">
+						Clear history
+					</button>
+					<form id="history"></form>
+				</div>
+				<div class="col-8">
+					<div class="row mr-0">
+						<div class="col-12 border border-dark m-3 rounded">
+							<div class="row">
+								<div class="col-12">
+									<span id="city-name" class="city-name align-middle"></span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<p id="temperature"></p>
+								</div>
+							</div>
+							<div id="outputData"></div>
+							<div id="newUV"></div>
+							<div class="row">
+								<div class="col-12">
+									<p id="humidity"></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<p id="wind-speed"></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 d-flex">
+									<p id="UV-index"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<h3>5-Day Forecast</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="output2"></div>
+						<div id="dates"></div>
+						<div
+							class="col Day1 forecast bg-primary text-white ml-3 mb-3 rounded"
+						>
+							<div class="outputnum"></div>
+						</div>
+					</div>
+
+	
+				</div>
+			</div>
+		</div>
 
 		<!-- Bootstrap core JavaScript -->
 		<script
@@ -105,13 +121,12 @@
 			crossorigin="anonymous"
 		></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-        
-        <script src="./script.js"></script>
+		<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+
+		<script src="./script.js"></script>
 
 		<!-- Menu Toggle Script -->
-
 	</body>
 </html>

@@ -1,3 +1,33 @@
 .col {
-    margin-left: 20px;
+	margin-left: 20px;
+}
+
+.low {
+	background-color: green;
+	color: white;
+	padding: 5px;
+}
+
+.moderate {
+	background-color: yellow;
+	color: black;
+	padding: 5px;
+}
+
+.high {
+	background-color: darkorange;
+	color: black;
+	padding: 5px;
+}
+
+.veryHigh {
+	background-color: red;
+	color: white;
+	padding: 5px;
+}
+
+.extreme {
+	background-color: purple;
+	color: white;
+	padding: 5px;
 }
