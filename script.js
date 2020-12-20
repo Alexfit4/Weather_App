@@ -4,8 +4,6 @@ var searchKey = "";
 var currentDate = dayjs().format("DD/MM/YYYY");
 var url = "http://api.openweathermap.org/data/2.5/forecast?";
 
-// var fiveDay = "http://api.openweathermap.org/data/2.5/forecast/daily?"
-
 $(document).ready(function () {
 	$("#submit").click(function (e) {
 		e.preventDefault();
@@ -22,7 +20,6 @@ $(document).ready(function () {
 		// Check if text area had data
 		if (location != "") {
 			getCurrentWeather();
-			
 		}
 
 		function getCurrentWeather(data) {
@@ -104,7 +101,9 @@ $(document).ready(function () {
 				success: function (data) {
 					for (var i = 1; i < 6; i++) {
 						// Set five day forecast variables
-						var dayDiv = $("<div class=col-2></div>");
+						var dayDiv = $(
+							"<div class='col-2 bg-primary text-white ml-3 mb-3 rounded'></div>"
+						);
 						var day = dayjs().date();
 						var adjDay = day + i;
 						var month = dayjs().format("MM");
@@ -113,9 +112,7 @@ $(document).ready(function () {
 						var maxTemp = $(
 							"<p>High: " + data.daily[i].temp.max + "\u2109</p>"
 						);
-						var minTemp = $(
-							"<p>Low: " + data.daily[i].temp.min + "\u2109</p>"
-						);
+						var minTemp = $("<p>Low: " + data.daily[i].temp.min + "\u2109</p>");
 						var dayHumid = $(
 							"<p>Humidity: " + data.daily[i].humidity + "%</p>"
 						);
@@ -125,7 +122,8 @@ $(document).ready(function () {
 								'@2x.png" alt="weather icon">'
 						);
 
-						$('.col').append(dayDisp, dayImg, maxTemp, minTemp, dayHumid);
+						$(".row").append(dayDiv);
+						dayDiv.append(dayDisp, dayImg, maxTemp, minTemp, dayHumid);
 					}
 				},
 			});
