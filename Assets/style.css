@@ -10,6 +10,7 @@ h1 {
 	text-align: center;
 }
 
+/* Styling for the UV index */
 .low {
 	background-color: green;
 	color: white;
@@ -40,10 +41,12 @@ h1 {
 	padding: 5px;
 }
 
+/* Style for the old forecast search button */
 .oldForecast {
 	width: 100%;
+	text-align: left;
 }
 
 .other {
-	margin-left: 280px;
+	float: right;
 }

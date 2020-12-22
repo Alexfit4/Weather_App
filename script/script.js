@@ -1,11 +1,11 @@
 // API Key used for open weather
-// import dotenv from  "dotenv";
 var apiKey = "4464393d7bcb567442cbd649e97679ad";
 var searchKey = "";
 var currentDate = dayjs().format("DD/MM/YYYY");
 var url = "http://api.openweathermap.org/data/2.5/forecast?";
 
 $(document).ready(function () {
+	// Fucntion calling the five day forecast //
 	function getFiveDay(long, lat) {
 		var fiveQuery =
 			"https://api.openweathermap.org/data/2.5/onecall?lat=" +
@@ -39,12 +39,16 @@ $(document).ready(function () {
 							'@2x.png" alt="weather icon">'
 					);
 
+					//Appended all the info to the faveDay class //
+
 					$(".fiveDay").append(dayDiv);
 					dayDiv.append(dayDisp, dayImg, maxTemp, minTemp, dayHumid);
 				}
 			},
 		});
 	}
+
+	// Calling the UV index function //
 	function getUV(long, lat) {
 		// UV Index URL
 		var uvQuery =
@@ -79,6 +83,8 @@ $(document).ready(function () {
 			$("#newUV").html(currentUV);
 		});
 	}
+
+	// Function calling the cities that were searched into a list under nearth the search bar, also setting local storage and being able to clear local storage //
 	function displayCities() {
 		$("ol").empty();
 		var currentCities;
@@ -89,12 +95,12 @@ $(document).ready(function () {
 				$("ol").append(
 					"<li>" +
 						"<button class='oldForecast btn  mb-3 btn-outline-secondary' type='button'>" +
-						currentCities[i] + "<i class='other fas fa-search'></i>"+ 
+						currentCities[i] +
+						"<i class='other fas fa-search'></i>" +
 						"</button>" +
 						"</li>"
 				);
 			}
-
 
 			// Allows user to click on previous searched weather inputs from the list and show in the output field
 			$(".oldForecast").click((e) => {
@@ -106,7 +112,7 @@ $(document).ready(function () {
 		}
 	}
 
-
+	// Function allowing user to click on the old cities searched and showing there results again on the out put container //
 	function getOldWeather(city) {
 		$.ajax({
 			type: "GET",
@@ -134,6 +140,7 @@ $(document).ready(function () {
 		});
 	}
 
+	// TFunction calling the last city entered and showing it to the output field
 	function getRecentWeather(citiesArray) {
 		var recent = citiesArray[citiesArray.length - 1];
 		$.ajax({
@@ -163,6 +170,8 @@ $(document).ready(function () {
 	}
 
 	displayCities();
+
+	// This is the main function when search button is clicked all the values with show on the main content, also forcing the user to input a valid city or zip code //
 
 	$("#submit").click(function (e) {
 		e.preventDefault();
@@ -198,6 +207,7 @@ $(document).ready(function () {
 			getCurrentWeather();
 		}
 
+		// Function showing the current weather
 		function getCurrentWeather(data) {
 			$.ajax({
 				type: "GET",
@@ -229,12 +239,14 @@ $(document).ready(function () {
 		}
 	});
 
+	// When the clear button is clicked all the info is erassed off the local storage and html//
 	$("#clear-history").click(function (e) {
 		localStorage.setItem("cities", []);
 		displayCities();
 		location.reload();
 	});
 
+	// Showing the output data //
 	function outputdata(data) {
 		var date = new Date();
 		// Return the HTML string of all the desired data
