@@ -39,3 +39,11 @@ h1 {
 	color: white;
 	padding: 5px;
 }
+
+.oldForecast {
+	width: 100%;
+}
+
+.other {
+	margin-left: 280px;
+}

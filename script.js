@@ -88,8 +88,8 @@ $(document).ready(function () {
 			for (let i = 0; i < currentCities.length; i++) {
 				$("ol").append(
 					"<li>" +
-						"<button class='oldForecast btn btn-primary mb-3' type='button'>" +
-						currentCities[i] +
+						"<button class='oldForecast btn  mb-3 btn-outline-secondary' type='button'>" +
+						currentCities[i] + "<i class='other fas fa-search'></i>"+ 
 						"</button>" +
 						"</li>"
 				);
