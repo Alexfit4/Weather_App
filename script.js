@@ -95,13 +95,17 @@ $(document).ready(function () {
 				);
 			}
 
+
+			// Allows user to click on previous searched weather inputs from the list and show in the output field
+			$(".oldForecast").click((e) => {
+				console.log("clicked");
+				getOldWeather($(e.target).text());
+			});
+
 			getRecentWeather(currentCities);
 		}
 	}
 
-	$(".oldForecast").click((e) => {
-		getOldWeather(e.target.html());
-	});
 
 	function getOldWeather(city) {
 		$.ajax({
@@ -179,7 +183,7 @@ $(document).ready(function () {
 		} else {
 			localStorage.setItem("cities", JSON.stringify([location]));
 		}
-		// displayCities();
+
 		// Check if zip code or city
 		$("#location").val("");
 
@@ -223,8 +227,6 @@ $(document).ready(function () {
 				},
 			});
 		}
-
-
 	});
 
 	$("#clear-history").click(function (e) {
