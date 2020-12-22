@@ -2,7 +2,7 @@
 var apiKey = "4464393d7bcb567442cbd649e97679ad";
 var searchKey = "";
 var currentDate = dayjs().format("DD/MM/YYYY");
-var url = "http://api.openweathermap.org/data/2.5/forecast?";
+var url = "https://api.openweathermap.org/data/2.5/forecast?";
 
 $(document).ready(function () {
 	// Fucntion calling the five day forecast //
@@ -117,7 +117,7 @@ $(document).ready(function () {
 		$.ajax({
 			type: "GET",
 			url:
-				"http://api.openweathermap.org/data/2.5/weather?q=" +
+				"https://api.openweathermap.org/data/2.5/weather?q=" +
 				city +
 				"&appid=" +
 				apiKey,
@@ -146,7 +146,7 @@ $(document).ready(function () {
 		$.ajax({
 			type: "GET",
 			url:
-				"http://api.openweathermap.org/data/2.5/weather?q=" +
+				"https://api.openweathermap.org/data/2.5/weather?q=" +
 				recent +
 				"&appid=" +
 				apiKey,
@@ -212,7 +212,7 @@ $(document).ready(function () {
 			$.ajax({
 				type: "GET",
 				url:
-					"http://api.openweathermap.org/data/2.5/weather?" +
+					"https://api.openweathermap.org/data/2.5/weather?" +
 					searchKey +
 					"=" +
 					location +
@@ -257,7 +257,7 @@ $(document).ready(function () {
 			currentDate +
 			")" +
 			"</h2>" +
-			"<img src='http://openweathermap.org/img/w/" +
+			"<img src='https://openweathermap.org/img/w/" +
 			data.weather[0].icon +
 			".png' width=100px>" +
 			"<br>" +
