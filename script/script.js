@@ -90,7 +90,7 @@ $(document).ready(function () {
 		var currentCities;
 		if (localStorage.getItem("cities")) {
 			currentCities = JSON.parse(localStorage.getItem("cities"));
-			console.log(currentCities);
+
 			for (let i = 0; i < currentCities.length; i++) {
 				$("ol").append(
 					"<li>" +
@@ -104,7 +104,6 @@ $(document).ready(function () {
 
 			// Allows user to click on previous searched weather inputs from the list and show in the output field
 			$(".oldForecast").click((e) => {
-				console.log("clicked");
 				getOldWeather($(e.target).text());
 			});
 
