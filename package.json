@@ -1,0 +1,25 @@
+{
+  "name": "Weather_App",
+  "type":"module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexfit4/Weather_App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexfit4/Weather_App/issues"
+  },
+  "homepage": "https://github.com/Alexfit4/Weather_App#readme"
+}

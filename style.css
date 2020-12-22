@@ -1,13 +1,14 @@
+.fiveDay {
+	display: flex;
+}
+
 .col-2 {
 	margin-left: 20px;
-	
 }
 
 h1 {
 	text-align: center;
 }
-
-
 
 .low {
 	background-color: green;
